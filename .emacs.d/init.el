@@ -21,9 +21,6 @@
 
 (require 'package)
 
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/") t)
-
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
@@ -151,40 +148,24 @@
   :init (setq elm-indent-offset 4))
 
 ;; Purescript
-
-;; (use-package purescript-mode
-;;   :ensure t
-;;   :defer t
-;;   :pin emacs-pe
-;;   :config
-;;   (require 'psc-ide)
-;;   (add-hook 'purescript-mode-hook
-;;             (lambda ()
-;;               (repl-toggle-mode)
-;;               (inferior-psci-mode)
-;;               (psc-ide-mode)
-;;               (flycheck-mode)
-;;               (turn-on-purescript-indentation))))
+(use-package purescript-mode
+  :ensure t
+  :defer t
+  :pin emacs-pe
+  :config
+  (require 'psc-ide)
+  (add-hook 'purescript-mode-hook
+            (lambda ()
+              (repl-toggle-mode)
+              (inferior-psci-mode)
+              (psc-ide-mode)
+              (flycheck-mode)
+              (turn-on-purescript-indentation))))
 
 (use-package psci
   :ensure t
   :defer t
   :pin emacs-pe)
-
-;; (require 'psc-ide)
-;; (add-hook 'purescript-mode-hook
-;;   (lambda ()
-;;     (psc-ide-mode)
-;;     (company-mode)
-;;     (flycheck-mode)
-;;     (turn-on-purescript-indentation)))
-
-;; FIXME unavailable?
-;;(use-package psc-ide
-;;  :ensure t
-;;  :defer t
-;;  :pin melpa
-;;  :diminish (psc-ide-mode . "Pi"))
 
 (use-package repl-toggle
   :ensure t
@@ -250,7 +231,7 @@
          ("C-c C-b" . magit-blame-mode))
   :config
   (setq magit-last-seen-setup-instructions "1.4.0")
-  (setq magit-revert-buffers 'silent)
+  (setq magit-auto-revert-mode 'silent)
   (setq magit-diff-refine-hunk t))
 
 ;; Paredit
@@ -286,12 +267,13 @@
   (global-company-mode))
 
 ;; IDO
-(use-package ido-ubiquitous
+(use-package ido-completing-read+
   :ensure t
   :pin melpa-stable
   :config
-  (ido-mode t)
-  (ido-ubiquitous)
+  (ido-mode 1)
+  (ido-ubiquitous-mode 1)
+  (ido-everywhere 1)
   (setq ido-enable-flex-matching t)
   (global-set-key "\M-x"
                 (lambda ()
@@ -431,7 +413,7 @@
   :ensure t
   :pin melpa-stable
   :diminish (git-gutter-mode . "GG")
-  :bind ("C-x C-g" . git-gutter:toggle))
+  :bind ("C-x C-g" . git-gutter-mode))
 
 ;; inf-ruby
 (use-package inf-ruby
@@ -552,7 +534,6 @@
 
 ;; spaces instead of tabs
 (setq-default indent-tabs-mode nil)
-(setq default-tab-width 2)
 (setq tab-width 2)
 (setq python-indent 3)
 (setq c-basic-offset 3)
@@ -626,12 +607,14 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme clj-refactor align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode psci projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-ubiquitous idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode cider browse-kill-ring ansible ag ace-flyspell))))
+    (avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme clj-refactor align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode psci projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode cider browse-kill-ring ansible ag ace-flyspell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-preview ((t (:background "brightyellow" :foreground "wheat"))))
+ '(company-tooltip ((t (:background "brightyellow" :foreground "black"))))
  '(diff-refine-added ((t (:inherit diff-added :background "#4e4e4e"))))
  '(idle-highlight ((t (:background "#4e4e4e"))))
  '(linum ((t (:foreground "#555"))))
