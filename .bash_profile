@@ -1,5 +1,5 @@
 PATH=$PATH:$HOME/.lein/
-PATH=$PATH:/Users/abby/.local/bin
+PATH=$PATH:/Users/sassela/.local/bin
 
 alias emacs="/usr/local/Cellar/emacs/25.3/Emacs.app/Contents/MacOS/Emacs -nw"
 alias ls='ls -GFh'
