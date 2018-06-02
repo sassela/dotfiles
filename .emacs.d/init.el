@@ -12,8 +12,8 @@
     (progn
       (scroll-bar-mode -1)
       (tool-bar-mode -1)
-      (set-face-attribute 'default nil :height 80)
-      (set-frame-size (selected-frame) 133 100))
+      (set-face-attribute 'default nil :height 100)
+      (set-frame-size (selected-frame) 100 100))
   (menu-bar-mode 0))
 
 ;; =============================================================
@@ -514,6 +514,9 @@
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+;; duplicate line
+(global-set-key (kbd "C-c C-d") 'duplicate-line)
+
 (setq frame-title-format "%b")
 (set-default 'truncate-lines t)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -554,11 +557,22 @@
 (setq-default save-place t)
 (setq save-place-file (expand-file-name "places" user-emacs-directory))
 
+;; copy line
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (forward-line 1)
+  (yank)
+)
+
 ;; =============================================================
 ;; Handy functions
 
 ;; XML pretty print
-(defun pretty-print-xml-region (begin end)
+(defun pretty-print-xml-region(begin end)
   (interactive "r")
   (save-excursion
     (nxml-mode)
@@ -607,12 +621,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme clj-refactor align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode psci projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode cider browse-kill-ring ansible ag ace-flyspell))))
+    (psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#26292c" :foreground "#f8f8f8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "nil" :family "Menlo"))))
  '(company-preview ((t (:background "brightyellow" :foreground "wheat"))))
  '(company-tooltip ((t (:background "brightyellow" :foreground "black"))))
  '(diff-refine-added ((t (:inherit diff-added :background "#4e4e4e"))))
