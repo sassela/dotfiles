@@ -117,9 +117,7 @@
                (hindent-mode)
                (haskell-indentation-mode t)
                (interactive-haskell-mode t)
-               (ghc-init)
-               ;; (structured-haskell-mode t)
-               ))
+               (ghc-init)))
   (define-key haskell-mode-map "\C-c\C-h" 'hoogle))
 
 (use-package intero
