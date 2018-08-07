@@ -34,7 +34,7 @@
 (require 'purescript-mode-autoloads)
 (add-to-list 'Info-default-directory-list "~/lib/emacs/purescript-mode/")
 
-(package-initialize)
+(setq package-enable-at-startup nil) (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
