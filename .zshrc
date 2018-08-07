@@ -2,12 +2,19 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/sassela/play/dotfiles/oh-my-zsh
+  export ZSH=/home/abbuntu/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -29,10 +36,10 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -51,7 +58,9 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,10 +89,43 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gcom='git checkout master'
-alias gcob='git checkout -b'
 alias gcm='git commit -m'
 alias 'ga.a'='git add --patch'
+alias gcob='git checkout -b'
+alias glom='git pull origin master'
+
+# Habito aliases
+alias hw='cd ~/dev/habito-web/'
+alias hww='hw && npm run watch'
+alias he='cd ~/dev/habito/engine'
+alias hedu='he && dcu'
+alias herb='he && ./dev-scripts/tmux/run-backend'
+alias heit='he && shit'
+alias heapi='cd ~/dev/habito/engine/lib/habito-mortgages-residential-application-journeys/api/src/'
+alias hecqrs='cd ~/dev/habito/engine/lib/habito-mortgages-residential-application-journeys/cqrs/src/'
+
+alias che='cd ~/dev/clone/habito/engine'
+alias chedu='che && dcu'
+alias cherb='che && ./dev-scripts/tmux/run-backend'
+alias cheit='che && shit'
+
+# stack
+alias sbff='stack install --file-watch --fast'
+alias sbft='stack install --file-watch --fast --test'
+alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwarn"'
+alias shit='stack --no-nix-pure exec habito-integration -- -j1 --base-url http://localhost:9295 --admin-base-url http://localhost:9296 --webhooks-base-url http://localhost:9297 --thirdparty-base-url http://localhost:9298'
+
+# dev
+alias dcu='docker-compose down -v && docker-compose up --build -d'
+alias adminme='./dev-scripts/add-local-admin.sh --ephemeral abby.sassel@habito.com'
+
+# etc
+alias szshrc='source ~/.zshrc'
