@@ -16,6 +16,8 @@
       (set-frame-size (selected-frame) 100 100))
   (menu-bar-mode 0))
 
+(add-to-list 'default-frame-alist
+             '(font . "Ubuntu Mono-10"))
 ;; =============================================================
 ;; package
 
@@ -337,15 +339,16 @@
   :ensure t
   :pin melpa-stable)
 
-;; hl-sexp
-(use-package hl-sexp
-  :ensure t
-  :pin melpa-stable
-  :config
-  (add-hook 'clojure-mode-hook 'hl-sexp-mode)
-  (add-hook 'lisp-mode-hook 'hl-sexp-mode)
-  (add-hook 'scheme-mode-hook 'hl-sexp-mode)
-  (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode))
+;;FIXME error: Package ‘hl-sexp-’ is unavailable
+;; ;; hl-sexp
+;; (use-package hl-sexp
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :config
+;;   (add-hook 'clojure-mode-hook 'hl-sexp-mode)
+;;   (add-hook 'lisp-mode-hook 'hl-sexp-mode)
+;;   (add-hook 'scheme-mode-hook 'hl-sexp-mode)
+;;   (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode))
 
 ;; idle-highlight-mode
 (use-package idle-highlight-mode
