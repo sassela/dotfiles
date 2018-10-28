@@ -112,7 +112,6 @@
   (add-hook 'haskell-mode-hook
             '(lambda ()
                (setq-local completion-at-point-functions '(haskell-process-completions-at-point))
-               (flycheck-add-next-checker 'intero '(warning . haskell-hlint))
                (intero-mode)
                (hindent-mode)
                (haskell-indentation-mode t)
@@ -123,7 +122,12 @@
 (use-package intero
   :ensure t
   :defer t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :config
+  (add-hook 'intero-mode-hook
+            '(lambda ()
+               (flycheck-add-next-checker 'intero '(warning . haskell-hlint))
+               (flycheck-add-next-checker 'intero '(warning . haskell-stack-ghc)))))
 
 (use-package ghc
   :ensure t
