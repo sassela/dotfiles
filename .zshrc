@@ -87,3 +87,13 @@ alias gcom='git checkout master'
 alias gcob='git checkout -b'
 alias gcm='git commit -m'
 alias 'ga.a'='git add --patch'
+alias gcob='git checkout -b'
+alias glom='git pull origin master'
+
+# stack
+alias sbff='stack install --file-watch --fast'
+alias sbft='stack install --file-watch --fast --test'
+alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwarn"'
+
+# etc
+alias szshrc='source ~/.zshrc'

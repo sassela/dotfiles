@@ -93,7 +93,7 @@
 ;; Haskell
 ;; make sure there is no local ghc in the path!
 ;; stack setup
-;; stack install hlint hindent ghc-mod hdevtools ghcid intero
+;; stack install hlint hindent ghc-mod hdevtools ghcid intero stylish-haskell
 
 (use-package haskell-mode
   :ensure t
@@ -104,8 +104,8 @@
         haskell-process-suggest-hoogle-imports t
         haskell-process-suggest-remove-import-lines t
         haskell-process-auto-import-loaded-modules t
-        hindent-reformat-buffer-on-save t
         haskell-stylish-on-save t
+        hindent-reformat-buffer-on-save t
         haskell-tags-on-save t
         haskell-process-log t
         haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
@@ -131,6 +131,7 @@
 (use-package ghc
   :ensure t
   :defer t
+  :disabled t
   :pin melpa-stable)
 
 (use-package hindent
@@ -637,4 +638,6 @@
  '(diff-refine-added ((t (:inherit diff-added :background "#4e4e4e"))))
  '(idle-highlight ((t (:background "#4e4e4e"))))
  '(linum ((t (:foreground "#555"))))
+ '(org-level-3 ((t (:foreground "white"))))
+ '(org-level-4 ((t (:foreground "brightmagenta"))))
  '(region ((t (:background "#4c4f52")))))
