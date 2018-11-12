@@ -111,17 +111,14 @@
         haskell-process-suggest-hoogle-imports t
         haskell-process-suggest-remove-import-lines t
         haskell-process-auto-import-loaded-modules t
-        haskell-stylish-on-save t
-        hindent-reformat-buffer-on-save t
         haskell-tags-on-save t
         haskell-process-log t
         haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
   (add-hook 'haskell-mode-hook
             '(lambda ()
                (setq-local completion-at-point-functions '(haskell-process-completions-at-point))
+               (hlint-refactor-mode)
                (intero-mode)
-               (hindent-mode)
-               (haskell-indentation-mode t)
                (ghc-init)))
   (define-key haskell-mode-map "\C-c\C-h" 'hoogle))
 
