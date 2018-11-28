@@ -96,4 +96,13 @@ alias sbft='stack install --file-watch --fast --test'
 alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwarn"'
 
 # etc
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias szshrc='source ~/.zshrc'
+apply-refact () {
+    hlint "$1" --refactor --refactor-options="--inplace"
+}
+
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'

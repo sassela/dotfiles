@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-;; C-u 0 M-x byte-recompile-directory
+;; M-x byte-recompile-directory
 
 (setq inhibit-startup-screen t)
 
@@ -32,9 +32,16 @@
 (add-to-list 'package-archives
              '("emacs-pe" . "https://emacs-pe.github.io/packages/"))
 
+
+;; https://github.com/dysinger/purescript-mode
 (add-to-list 'load-path "~/lib/emacs/purescript-mode/")
 (require 'purescript-mode-autoloads)
 (add-to-list 'Info-default-directory-list "~/lib/emacs/purescript-mode/")
+
+;; https://github.com/jaypei/emacs-neotree
+(add-to-list 'load-path "~/lib/emacs/neotree")
+(require 'neotree)
+(global-set-key (kbd "C-x t") 'neotree-toggle)
 
 (setq package-enable-at-startup nil) (package-initialize)
 
