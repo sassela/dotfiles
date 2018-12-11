@@ -52,6 +52,7 @@
   (package-install 'use-package))
 (require 'use-package)
 
+(package-install 'intero)
 ;; =============================================================
 ;; Major modes
 
@@ -198,6 +199,17 @@
   :pin melpa-stable)
 
 ;; Docker
+(use-package docker
+  :ensure t
+  :defer t
+  :pin melpa-stable
+  :bind ("C-c d" . docker))
+
+(use-package docker-compose-mode
+  :ensure t
+  :defer t
+  :pin melpa-stable)
+
 (use-package dockerfile-mode
   :ensure t
   :defer t
@@ -633,7 +645,15 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell))))
+    (docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
+ '(safe-local-variable-values
+   (quote
+    ((intero-targets "aeas:lib" "aeas:exe:aeas-exe" "aeas:test:aeas-test")
+     (eval define-clojure-indent
+           (snippet
+            (quote defun))
+           (template
+            (quote defun)))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
