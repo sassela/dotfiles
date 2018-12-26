@@ -22,34 +22,25 @@
 ;; package
 
 (require 'package)
-
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 
 (add-to-list 'package-archives
-             '("emacs-pe" . "https://emacs-pe.github.io/packages/"))
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
+(setq package-enable-at-startup nil)
 
-;; https://github.com/dysinger/purescript-mode
-(add-to-list 'load-path "~/lib/emacs/purescript-mode/")
-(require 'purescript-mode-autoloads)
-(add-to-list 'Info-default-directory-list "~/lib/emacs/purescript-mode/")
-
-;; https://github.com/jaypei/emacs-neotree
-(add-to-list 'load-path "~/lib/emacs/neotree")
-(require 'neotree)
-(global-set-key (kbd "C-x t") 'neotree-toggle)
-
-(setq package-enable-at-startup nil) (package-initialize)
+(package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 (when (not (package-installed-p 'use-package))
   (package-install 'use-package))
+
 (require 'use-package)
 
 ;; =============================================================
@@ -92,6 +83,7 @@
   :ensure t
   :defer t
   :pin melpa-stable)
+
 (use-package go-eldoc
   :ensure t
   :defer t
@@ -100,7 +92,7 @@
 ;; Haskell
 ;; make sure there is no local ghc in the path!
 ;; stack setup
-;; stack install hlint hindent ghc-mod hdevtools ghcid intero stylish-haskell
+;; stack install hlint hindent hdevtools ghcid stylish-haskell
 
 (use-package haskell-mode
   :ensure t
@@ -163,7 +155,7 @@
 (use-package purescript-mode
   :ensure t
   :defer t
-  :pin emacs-pe
+  :pin melpa
   :config
   (require 'psc-ide)
   (add-hook 'purescript-mode-hook
@@ -177,7 +169,7 @@
 (use-package psci
   :ensure t
   :defer t
-  :pin emacs-pe)
+  :pin melpa-stable)
 
 (use-package repl-toggle
   :ensure t
@@ -360,16 +352,15 @@
   :ensure t
   :pin melpa-stable)
 
-;;FIXME error: Package ‘hl-sexp-’ is unavailable
-;; ;; hl-sexp
-;; (use-package hl-sexp
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :config
-;;   (add-hook 'clojure-mode-hook 'hl-sexp-mode)
-;;   (add-hook 'lisp-mode-hook 'hl-sexp-mode)
-;;   (add-hook 'scheme-mode-hook 'hl-sexp-mode)
-;;   (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode))
+;; hl-sexp
+(use-package hl-sexp
+  :ensure t
+  :pin melpa-stable
+  :config
+  (add-hook 'clojure-mode-hook 'hl-sexp-mode)
+  (add-hook 'lisp-mode-hook 'hl-sexp-mode)
+  (add-hook 'scheme-mode-hook 'hl-sexp-mode)
+  (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode))
 
 ;; idle-highlight-mode
 (use-package idle-highlight-mode
@@ -414,12 +405,10 @@
          ("C-c ," . mc/mark-previous-like-this)
          ("C-c M-." . mc/mark-all-like-this)))
 
-;; FIXME unavailable
 ;; Expand region
-;; (use-package expand-region
-;;  :ensure t
-;;  :pin melpa
-;;  :bind ("C-\\" . er/expand-region))
+(use-package expand-region
+ :ensure t
+ :bind ("C-x =" . er/expand-region))
 
 ;; Yagist
 (use-package yagist
@@ -428,6 +417,7 @@
   :pin melpa-stable
   :config
   (setq yagist-encrypt-risky-config t))
+
 (use-package kaesar
   :ensure t
   :pin melpa-stable)
@@ -493,6 +483,20 @@
   (add-hook 'clojure-mode-hook (lambda ()
                                (clj-refactor-mode 1)
                                (cljr-add-keybindings-with-prefix "C-c C-o"))))
+
+(use-package dumb-jump
+  :ensure t
+  :diminish dumb-jump-mode
+  :bind (("C-c j" . dumb-jump-go)
+         ("C-c b" . dumb-jump-back)
+         ("C-c q" . dumb-jump-quick-look)))
+
+;; https://github.com/jaypei/emacs-neotree
+(use-package neotree
+  :ensure t
+  :pin melpa-stable
+  :config
+  (global-set-key (kbd "C-x t") 'neotree-toggle))
 
 ;; =============================================================
 ;; Colors
@@ -645,10 +649,11 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (intero docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
+    (psc-ide dumb-jump smex highlight-sexp expand-region intero docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle projectile paredit mustache-mode multiple-cursors markdown-mode magit ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
  '(safe-local-variable-values
    (quote
-    ((intero-targets "aeas:lib" "aeas:exe:aeas-exe" "aeas:test:aeas-test")
+    ((intero-stack-yaml . "/Users/sassela/.stack/config.yaml")
+     (intero-targets "aeas:lib" "aeas:exe:aeas-exe" "aeas:test:aeas-test")
      (eval define-clojure-indent
            (snippet
             (quote defun))
