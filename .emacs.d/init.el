@@ -52,7 +52,6 @@
   (package-install 'use-package))
 (require 'use-package)
 
-(package-install 'intero)
 ;; =============================================================
 ;; Major modes
 
@@ -117,6 +116,8 @@
         haskell-tags-on-save t
         haskell-process-log t
         haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
+  (add-to-list 'load-path "~/lib/emacs/intero/elisp")
+  (require 'intero)
   (add-hook 'haskell-mode-hook
             '(lambda ()
                (setq-local completion-at-point-functions '(haskell-process-completions-at-point))
@@ -129,7 +130,6 @@
 (use-package intero
   :ensure t
   :defer t
-  :pin melpa-stable
   :config
   (add-hook 'intero-mode-hook
             '(lambda ()
@@ -645,7 +645,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
+    (intero docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
  '(safe-local-variable-values
    (quote
     ((intero-targets "aeas:lib" "aeas:exe:aeas-exe" "aeas:test:aeas-test")
