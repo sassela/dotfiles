@@ -166,6 +166,11 @@
               (flycheck-mode)
               (turn-on-purescript-indentation))))
 
+(use-package psc-ide
+  :ensure t
+  :defer t
+  :pin melpa)
+
 (use-package psci
   :ensure t
   :defer t
@@ -351,16 +356,6 @@
 (use-package flyspell
   :ensure t
   :pin melpa-stable)
-
-;; hl-sexp
-(use-package hl-sexp
-  :ensure t
-  :pin melpa-stable
-  :config
-  (add-hook 'clojure-mode-hook 'hl-sexp-mode)
-  (add-hook 'lisp-mode-hook 'hl-sexp-mode)
-  (add-hook 'scheme-mode-hook 'hl-sexp-mode)
-  (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode))
 
 ;; idle-highlight-mode
 (use-package idle-highlight-mode
