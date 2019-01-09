@@ -593,20 +593,21 @@
 
 ;; copy line
 (defun duplicate-line()
+  "BEGIN copy line END."
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)
   (yank)
   (open-line 1)
   (forward-line 1)
-  (yank)
-)
+  (yank))
 
 ;; =============================================================
 ;; Handy functions
 
 ;; XML pretty print
-(defun pretty-print-xml-region(begin end)
+(defun pretty-print-xml-region (begin end)
+  "BEGIN XML pretty print END."
   (interactive "r")
   (save-excursion
     (nxml-mode)
@@ -622,7 +623,12 @@
 ;; Allow hash to be entered
 (when (eq 'darwin system-type)
 
-  (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
+  (global-set-key
+   (kbd "M-3")
+   '(lambda ()
+      "BEGIN Allow hash to be entered END."
+      (interactive)
+      (insert "#")))
 
   (use-package exec-path-from-shell
     :ensure t
