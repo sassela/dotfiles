@@ -27,6 +27,9 @@
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+(add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (add-to-list 'package-archives
@@ -484,6 +487,23 @@
                                (clj-refactor-mode 1)
                                (cljr-add-keybindings-with-prefix "C-c C-o"))))
 
+;; js2-mode
+(use-package js2-mode
+  :ensure t
+  :pin melpa
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+  (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode)))
+
+;; prettier-js
+(use-package prettier-js
+  :ensure t
+  :pin melpa
+  :config
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook #'(lambda ()
+                            (enable-minor-mode
+                             '("\\.jsx?\\'" . prettier-js-mode)))))
 ;; =============================================================
 ;; Colors
 
@@ -635,7 +655,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell))))
+    (prettier-js psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle purescript-mode projectile paredit mustache-mode multiple-cursors markdown-mode magit intero ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
