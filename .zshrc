@@ -110,3 +110,4 @@ alias cd5='cd ../../../../..'
 alias cdc='cd ~/work/cv/'
 alias cdm='cdc && cd mycv'
 alias cdv='cdc && cd vines'
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
