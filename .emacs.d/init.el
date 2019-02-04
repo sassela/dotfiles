@@ -518,6 +518,14 @@
 ;; =============================================================
 ;; Misc config
 
+;; tags
+  (defun create-tags (dir-name)
+     "Create tags file."
+     (interactive "DDirectory: ")
+     (eshell-command
+      (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name)))
+
+;; file history
 (recentf-mode)
 (setq recentf-max-menu-items 25)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -644,7 +652,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (psc-ide dumb-jump smex highlight-sexp expand-region intero docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle projectile paredit mustache-mode multiple-cursors markdown-mode magit ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
+    (intero psc-ide dumb-jump smex highlight-sexp expand-region docker-compose-mode docker psci clj-refactor cider avy haskell-mode go-mode clojure-mode exec-path-from-shell flatland-theme align-cljlet buffer-move jvm-mode inf-ruby git-gutter kaesar yagist yasnippet yaml-mode use-package undo-tree smartparens shm repl-toggle projectile paredit mustache-mode multiple-cursors markdown-mode magit ido-completing-read+ idle-highlight-mode hl-sexp hindent golden-ratio go-eldoc ghc flyspell-correct flycheck-haskell elm-mode dockerfile-mode browse-kill-ring ansible ag ace-flyspell)))
  '(safe-local-variable-values
    (quote
     ((intero-stack-yaml . "/Users/sassela/.stack/config.yaml")
