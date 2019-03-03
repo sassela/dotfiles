@@ -92,7 +92,7 @@
 ;; Haskell
 ;; make sure there is no local ghc in the path!
 ;; stack setup
-;; stack install hlint hindent hdevtools ghcid stylish-haskell
+;; stack install hlint hindent hdevtools ghcid intero stylish-haskell
 
 (use-package haskell-mode
   :ensure t
@@ -108,8 +108,6 @@
         haskell-tags-on-save t
         haskell-process-log t
         haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans"))
-  (add-to-list 'load-path "~/lib/emacs/intero/elisp")
-  (require 'intero)
   (add-hook 'haskell-mode-hook
             '(lambda ()
                (setq-local completion-at-point-functions '(haskell-process-completions-at-point))
