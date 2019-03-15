@@ -6,6 +6,8 @@
 ;;; Code:
 
 (setq inhibit-startup-screen t)
+(menu-bar-mode 0)
+
 
 ;; =============================================================
 ;; package
@@ -157,6 +159,7 @@
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 ;; Flyspell
+; brew install aspell
 (use-package flyspell
   :ensure t
   :pin melpa-stable)
