@@ -39,6 +39,34 @@
 ;; =============================================================
 ;; Major modes
 
+;; Haskell
+;; make sure there is no local ghc in the path!
+;; stack setup
+;; stack install hlint hindent hdevtools ghcid stylish-haskell hasktags haskdogs apply-refact
+;; brew install aspell
+
+(use-package haskell-mode
+  :ensure t
+  :pin melpa-stable
+  :config
+  (require 'haskell-interactive-mode)
+  (require 'haskell-process)
+  (setq
+    ;; formatting
+    haskell-stylish-on-save t
+    hindent-reformat-buffer-on-save t
+    ;; Haskell interactive mode
+    haskell-process-args-stack-ghci '("--ghc-options=-ferror-spans --no-build --no-load")
+    haskell-process-auto-import-loaded-modules t
+    haskell-process-suggest-hoogle-imports t
+    haskell-process-suggest-remove-import-lines t
+    haskell-tags-on-save t)
+  (add-hook 'haskell-mode-hook '(lambda ()
+				  (flyspell-prog-mode)
+				  (interactive-haskell-mode)))
+  ;; try GHCi first and fallback to tags for jumping
+  (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag))
+
 
 ;; =============================================================
 ;; Minor modes
