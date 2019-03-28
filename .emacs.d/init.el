@@ -56,6 +56,8 @@
     haskell-stylish-on-save t
     hindent-reformat-buffer-on-save t
     ;; Haskell interactive mode
+    haskell-process-type (quote stack-ghci)
+    haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans")
     haskell-process-auto-import-loaded-modules t
     haskell-process-suggest-hoogle-imports t
     haskell-process-suggest-remove-import-lines t
