@@ -66,7 +66,8 @@
 				  (flyspell-prog-mode)
 				  (interactive-haskell-mode)))
   ;; try GHCi first and fallback to tags for jumping
-  (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag))
+  (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def-or-tag)
+  (define-key haskell-mode-map [f8] 'haskell-navigate-imports))
 
 
 ;; =============================================================
@@ -488,6 +489,7 @@
             (quote defun))
            (template
             (quote defun)))))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -501,4 +503,4 @@
  '(linum ((t (:foreground "#555"))))
  '(org-level-3 ((t (:foreground "white"))))
  '(org-level-4 ((t (:foreground "brightmagenta"))))
-'(region ((t (:background "#4c4f52")))))
+ '(region ((t (:background "#4c4f52")))))
