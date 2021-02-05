@@ -99,6 +99,9 @@ alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwar
 # ghcup
 [ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
 
+# hasura
+alias cdm='cd ~/work/graphql-engine-mono'
+
 # etc
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias szshrc='source ~/.zshrc'
