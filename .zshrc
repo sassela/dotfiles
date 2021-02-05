@@ -3,7 +3,7 @@
 export PATH=$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/sassela/play/dotfiles/oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -95,6 +95,9 @@ alias glom='git pull origin master'
 alias sbff='stack install --file-watch --fast'
 alias sbft='stack install --file-watch --fast --test'
 alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwarn"'
+
+# ghcup
+[ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
 
 # etc
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
