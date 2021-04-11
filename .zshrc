@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/.cabal/bin:$HOME/.ghcup/bin/ghc:$HOME/.psvm/current/bin:$HOME/.local/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin/python3:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -84,12 +84,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias gcom='git checkout master'
+alias gcom='git branch | egrep "(master|main)" | xargs git checkout'
 alias gcob='git checkout -b'
 alias gcm='git commit -m'
 alias 'ga.a'='git add --patch'
 alias gcob='git checkout -b'
 alias glom='git pull origin master'
+alias gbda='git branch | egrep -v "(^\*|master|main)" | xargs git branch -D'
 
 # stack
 alias sbff='stack install --file-watch --fast'
@@ -101,10 +102,13 @@ alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwar
 
 # hasura
 alias cdm='cd ~/work/graphql-engine-mono'
+alias cdw='cd ~/work/graphql-engine-mono'
 
 # etc
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias szshrc='source ~/.zshrc'
+alias b="ghcid -c 'cabal new-repl' --reload=./src-lib --reload=./src-exec | source-highlight -s haskell -f esc"
+alias cdb="cdm && cd server && b"
+
 apply-refact () {
     hlint "$1" --refactor --refactor-options="--inplace"
 }
@@ -114,7 +118,15 @@ alias cd3='cd ../../..'
 alias cd4='cd ../../../..'
 alias cd5='cd ../../../../..'
 
+alias python='python3'
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/sassela/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sassela/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/sassela/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sassela/google-cloud-sdk/completion.zsh.inc'; fi
