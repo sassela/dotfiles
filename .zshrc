@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.cabal/bin:$HOME/.ghcup/bin/ghc:$HOME/.psvm/current/bin:$HOME/.local/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin/python3:$PATH
+# export PATH=
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin/ghc:$HOME/.psvm/current/bin:$HOME/.local/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin/python3:$HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
