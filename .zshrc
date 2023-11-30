@@ -1,6 +1,13 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.ghcup/env:$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
+# ruby
+export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
+# racket
+export PATH=$PATH:/Applications/Racket\ v8.10/bin
+eval "$(rbenv init -)"
+# prolog
+export PATH=$PATH:/Applications/SWI-Prolog.app/Contents/MacOS
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/sassela/play/dotfiles/oh-my-zsh
@@ -96,8 +103,12 @@ alias sbff='stack install --file-watch --fast'
 alias sbft='stack install --file-watch --fast --test'
 alias sbftw='stack install --file-watch --fast --test --ghc-options="-Wall -Wwarn"'
 
+# python
+alias python='python3'
+alias pip='pip3'
+
 # etc
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+# alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias szshrc='source ~/.zshrc'
 apply-refact () {
     hlint "$1" --refactor --refactor-options="--inplace"
@@ -112,3 +123,6 @@ alias cd5='cd ../../../../..'
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+#[ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
+
+[ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
