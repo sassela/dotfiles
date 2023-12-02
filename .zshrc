@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
+# cabal
+# /Users/sassela/.ghcup/bin must come before /usr/local/bin in PATH
+export PATH=$HOME/.ghcup/env:$PATH
+export PATH=$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.ghcup/env:$HOME/.psvm/current/bin:$HOME/.local/bin:$PATH
 # ruby
 export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
 # racket
@@ -123,6 +126,8 @@ alias cd5='cd ../../../../..'
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+#[ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
+
 #[ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
 
 [ -f "/Users/sassela/.ghcup/env" ] && source "/Users/sassela/.ghcup/env" # ghcup-env
