@@ -12,6 +12,10 @@ eval "$(rbenv init -)"
 # prolog
 export PATH=$PATH:/Applications/SWI-Prolog.app/Contents/MacOS
 
+# XTC lang
+export XTC_PATH=~/work/xtclang/development/xvm/xdk/build/xdk/bin
+export PATH=$PATH:$XTC_PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/sassela/play/dotfiles/oh-my-zsh
 
